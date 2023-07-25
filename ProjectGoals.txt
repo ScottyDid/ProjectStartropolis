@@ -1,0 +1,26 @@
+Player:
+- Shield Dome
+	- Health 1 - 100
+	- Change Material on incremental damage (75, 50, 25)
+	- Slowly regens
+Enemy:
+- Enemy Spawner
+	- Inactive formations
+	- Activate on timer
+	- Create a scriptable object to encompass all enemies
+
+Level:
+- Instant Kill Warning
+	- UI Alert w/ Timer
+	- Followed by instant kill hazard
+- New Attack Direction Warning
+	- UI Alert
+	- Move camera Left or Right
+		- Disable movement when this happens
+		- Disable turret controls for side that isn't seen.
+	- Move camera Down
+
+Visuals:
+- Enemy is freezes then explodes
+- Beam particle effects
+- Projectile trails
