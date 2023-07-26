@@ -5,12 +5,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	public float speed = 2.0f;
-	public float shieldTimer;
-
 	private Transform city;
-
 	public GameObject shield;
+	public GameObject dome;
 
+	//[SerializeField]
+	//private int;
+
+	[SerializeField]
+	private float shieldTimer, domeEnergy, domeIncrease;
+
+	[SerializeField]
+	private Material fullDome, thirdDome, halfDome, quarterDome;
 
 
 	// Use this for initialization
@@ -18,6 +24,7 @@ public class PlayerController : MonoBehaviour
 	{
 		city = GetComponent<Transform>();
 		shield.SetActive(false);
+		//domeEnergy = 100;
 	}
 
 	// Update is called once per frame
@@ -41,6 +48,42 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetButtonDown("Shield"))
         {
 			StartCoroutine(ShieldUp());
+        }
+		DomeControl();
+	}
+
+	void DomeControl()
+    {
+		domeEnergy += domeIncrease * Time.deltaTime;
+		
+		if (domeEnergy >= 100)
+        {
+			domeEnergy = 100;
+        }
+		if (domeEnergy <= 100)
+		{
+			dome.GetComponent<Renderer>().material = fullDome;
+		}
+		if (domeEnergy <= 75)
+        {
+			dome.GetComponent<Renderer>().material = thirdDome;
+        }
+		if (domeEnergy <= 50)
+		{
+			dome.GetComponent<Renderer>().material = halfDome;
+		}
+		if (domeEnergy <= 25)
+		{
+			dome.GetComponent<Renderer>().material = quarterDome;
+		}
+		if (domeEnergy <= 0)
+		{
+			dome.SetActive(false);
+			domeEnergy = 0;
+		}
+		else
+        {
+			dome.SetActive(true);
         }
 	}
 
