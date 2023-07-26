@@ -3,6 +3,9 @@ Player:
 	- Health 1 - 100
 	- Change Material on incremental damage (75, 50, 25)
 	- Slowly regens
+- Buildings
+	- Get destroyed if they are hit when the shield is down
+	- If all 3 are destroyed, game over
 Enemy:
 - Enemy Spawner
 	- Inactive formations
@@ -17,7 +20,7 @@ Level:
 	- UI Alert
 	- Move camera Left or Right
 		- Disable movement when this happens
-		- Disable turret controls for side that isn't seen.
+		- Disable turret controls for side that isn't seen
 	- Move camera Down
 
 Visuals:
