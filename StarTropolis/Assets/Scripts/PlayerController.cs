@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 			transform.position = new Vector3(20, 0, 0);
 		}
 
-		if (Input.GetButtonDown("Shield"))
+		if (Input.GetButton("Shield"))
         {
 			StartCoroutine(ShieldUp());
         }

@@ -1,8 +1,8 @@
-Player:
+//Player:
 - Shield Dome
 	- Health 1 - 100
 	- Change Material on incremental damage (75, 50, 25)
-	- Slowly regens
+//	- Slowly regens
 - Buildings
 	- Get destroyed if they are hit when the shield is down
 	- If all 3 are destroyed, game over
@@ -11,6 +11,12 @@ Enemy:
 	- Inactive formations
 	- Activate on timer
 	- Create a scriptable object to encompass all enemies
+
+Game Manager:
+	- Control the game score
+	- Communicate with Enemy Spawner
+	- Control instant kill
+	- Camera Direction Control
 
 Level:
 - Instant Kill Warning
