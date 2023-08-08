@@ -10,7 +10,15 @@ Enemy:
 - Enemy Spawner
 	- Inactive formations
 	- Activate on timer
-	- Create a scriptable object to encompass all enemies
+- Enemies
+	- Asteroids
+		- Slow moving
+		- Lots of health
+		- Breaks into 2 smaller asteroids when destroyed
+	- Missiles
+		- Normal Speed
+		- 1 Hit Kill
+		- Random angle of attack
 
 Game Manager:
 	- Control the game score
