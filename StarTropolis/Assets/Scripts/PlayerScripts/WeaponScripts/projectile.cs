@@ -18,6 +18,15 @@ public class projectile : MonoBehaviour
         transform.Translate(Vector3.up * Time.deltaTime * speed);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<EnemyScript>().TakeDamage(1);
+            Destroy(gameObject);
+        }
+    }
+
     IEnumerator SelfDestruct()
     {
         yield return new WaitForSeconds(5f);
