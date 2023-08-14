@@ -5,15 +5,10 @@ using UnityEngine;
 public class LeftBeamControl : MonoBehaviour
 {
 	private float xInput, yInput;
-	//private float canFireBullet = 1f;
 
 	public GameObject beam;
 
 	public Transform fireSpawnL;
-
-	[SerializeField]
-	//private float shootDelay = 1f;
-	//private float scatterOffSet = Random.Range(-10f, 10f);
 
 	// Use this for initialization
 	void Start()
@@ -36,7 +31,7 @@ public class LeftBeamControl : MonoBehaviour
 			transform.localEulerAngles = new Vector3(0, 0, inputAngle);
 		}
 
-		if (inputs.magnitude > 1f) //&& Time.time > canFireBullet)
+		if (inputs.magnitude > 1f)// && Time.time > canFireBeam)
 		{
 			ShootBeam();
 		}
@@ -48,9 +43,6 @@ public class LeftBeamControl : MonoBehaviour
 
 	void ShootBeam()
 	{
-		//canFireBullet = Time.time + shootDelay;
 		beam.gameObject.SetActive(true);
-
-		//projectile.transform.rotation *= Quaternion.Euler(0f, 0f, Random.Range(-10, 10f));
 	}
 }
