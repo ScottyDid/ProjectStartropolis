@@ -5,20 +5,21 @@ using UnityEngine;
 public class RightBeamControl : MonoBehaviour
 {
 	private float xInput, yInput;
-	//private float canFireBullet = 1f;
-
-	public GameObject beam;
-
-	public Transform fireSpawnR;
+	
+	[SerializeField]
+	private bool canFire;
 
 	[SerializeField]
-	//private float shootDelay = 1f;
-	//private float scatterOffSet = Random.Range(-10f, 10f);
+	private float chargeUp, chargeRate, fireTime;
+
+	public GameObject beam;
+	public Transform fireSpawnR;
 
 	// Use this for initialization
 	void Start()
 	{
-
+		canFire = false;
+		fireTime = 5f;
 	}
 
 	// Update is called once per frame
@@ -34,23 +35,29 @@ public class RightBeamControl : MonoBehaviour
 			float inputAngle = (Mathf.Atan2(inputs.y, inputs.x) * Mathf.Rad2Deg);
 			//Rotate the turret on the z-axis.
 			transform.localEulerAngles = new Vector3(0, 0, inputAngle);
-		}
+			chargeUp += Time.deltaTime * chargeRate;
 
-		if (inputs.magnitude > 1f) //&& Time.time > canFireBullet)
-		{
-			ShootBeam();
-		}
-		else
-		{
-			beam.gameObject.SetActive(false);
+			if (chargeUp >= 50f)
+			{
+				canFire = true;
+				ShootBeam();
+			}
+
+			if (canFire == true)
+			{
+				fireTime -= Time.deltaTime * chargeRate;
+			}
 		}
 	}
-
-	void ShootBeam()
+	public void ShootBeam()
 	{
-		//canFireBullet = Time.time + shootDelay;
 		beam.gameObject.SetActive(true);
-
-		//projectile.transform.rotation *= Quaternion.Euler(0f, 0f, Random.Range(-10, 10f));
+		chargeUp = 0f;
+		if (fireTime <= 0f)
+		{
+			beam.gameObject.SetActive(false);
+			canFire = false;
+			fireTime = 5f;
+		}
 	}
 }

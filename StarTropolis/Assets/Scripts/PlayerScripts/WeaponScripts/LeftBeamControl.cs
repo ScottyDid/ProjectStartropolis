@@ -13,7 +13,6 @@ public class LeftBeamControl : MonoBehaviour
 	private float chargeUp, chargeRate, fireTime;
 
 	public GameObject beam;
-
 	public Transform fireSpawnL;
 
 	// Use this for initialization
@@ -36,16 +35,20 @@ public class LeftBeamControl : MonoBehaviour
 			float inputAngle = (Mathf.Atan2(inputs.y, inputs.x) * Mathf.Rad2Deg);
 			//Rotate the turret on the z-axis.
 			transform.localEulerAngles = new Vector3(0, 0, inputAngle);
+			//Increase weapon charge
 			chargeUp += Time.deltaTime * chargeRate;
 
-			if (chargeUp >= 50f)// && Time.time > canFireBeam)
+			//reach 50 on weapon charge
+			if (chargeUp >= 50f)
 			{
+				//We can shoot
 				canFire = true;
 				ShootBeam();
 			}
 
 			if(canFire == true)
             {
+				//While we're firing reduce the fire time.
 				fireTime -= Time.deltaTime * chargeRate;
 			}
 		}
@@ -53,12 +56,18 @@ public class LeftBeamControl : MonoBehaviour
 
 	public void ShootBeam()
 	{
+		//Make the beam visable.
 		beam.gameObject.SetActive(true);
+		//Reset charge up.
 		chargeUp = 0f;
+		//If the fire time is 0
         if(fireTime <= 0f)
         {
+			//Switch off the beam.
 			beam.gameObject.SetActive(false);
+			//We can't shoot
 			canFire = false;
+			//Reset the fire time
 			fireTime = 5f;
 		}
 	}

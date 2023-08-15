@@ -22,7 +22,7 @@ public class beam : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyScript>().TakeDamage(0.1f);
+            other.gameObject.GetComponent<EnemyScript>().TakeDamage(2f);
         }
     }
 }

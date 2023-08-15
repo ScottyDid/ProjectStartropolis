@@ -8,12 +8,10 @@ public class LeftGunControl : MonoBehaviour
 	private float canFireBullet = 0f;
 
 	public GameObject projectile;
-	
 	public Transform fireSpawnL;
 
 	[SerializeField]
 	private float shootDelay = 1f;
-	//private float scatterOffSet = Random.Range(-10f, 10f);
 
 	// Use this for initialization
 	void Start()
@@ -36,17 +34,19 @@ public class LeftGunControl : MonoBehaviour
 			transform.localEulerAngles = new Vector3(0, 0, inputAngle);
 		}
 		
+		//If the force on the stick is more then 1, and if the time is greater then canFireBullet
 		if (inputs.magnitude > 1f && Time.time > canFireBullet)
         {
+			//Pew Pew
 			ShootProjectile();
         }
 	}
 
 	void ShootProjectile()
 	{
+		//canFireBullet is the same as time plus shoot delay value
 		canFireBullet = Time.time + shootDelay;
+		//create bullet, at gun barrel position, using guns rotation
 		Instantiate(projectile, fireSpawnL.position, fireSpawnL.rotation);
-
-		//projectile.transform.rotation *= Quaternion.Euler(0f, 0f, Random.Range(-10, 10f));
 	}
 }
