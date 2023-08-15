@@ -4125,6 +4125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0187f696bf8fc46990c263fe8ea6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFire: 0
+  chargeUp: 0
+  chargeRate: 20
+  fireTime: 5
   beam: {fileID: 348784003}
   fireSpawnL: {fileID: 874466044}
 --- !u!135 &2113288319

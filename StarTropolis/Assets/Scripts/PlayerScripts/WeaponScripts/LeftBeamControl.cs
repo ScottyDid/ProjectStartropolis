@@ -6,6 +6,12 @@ public class LeftBeamControl : MonoBehaviour
 {
 	private float xInput, yInput;
 
+	[SerializeField]
+	private bool canFire;
+
+	[SerializeField]
+	private float chargeUp, chargeRate, fireTime;
+
 	public GameObject beam;
 
 	public Transform fireSpawnL;
@@ -13,7 +19,8 @@ public class LeftBeamControl : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-
+		canFire = false;
+		fireTime = 5f;
 	}
 
 	// Update is called once per frame
@@ -29,20 +36,30 @@ public class LeftBeamControl : MonoBehaviour
 			float inputAngle = (Mathf.Atan2(inputs.y, inputs.x) * Mathf.Rad2Deg);
 			//Rotate the turret on the z-axis.
 			transform.localEulerAngles = new Vector3(0, 0, inputAngle);
-		}
+			chargeUp += Time.deltaTime * chargeRate;
 
-		if (inputs.magnitude > 1f)// && Time.time > canFireBeam)
-		{
-			ShootBeam();
+			if (chargeUp >= 50f)// && Time.time > canFireBeam)
+			{
+				canFire = true;
+				ShootBeam();
+			}
+
+			if(canFire == true)
+            {
+				fireTime -= Time.deltaTime * chargeRate;
+			}
 		}
-        else
-        {
-			beam.gameObject.SetActive(false);
-        }
 	}
 
-	void ShootBeam()
+	public void ShootBeam()
 	{
 		beam.gameObject.SetActive(true);
+		chargeUp = 0f;
+        if(fireTime <= 0f)
+        {
+			beam.gameObject.SetActive(false);
+			canFire = false;
+			fireTime = 5f;
+		}
 	}
 }
