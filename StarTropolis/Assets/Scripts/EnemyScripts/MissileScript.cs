@@ -25,13 +25,15 @@ public class MissileScript : MonoBehaviour
 
         if (GetComponent<EnemyScript>().health <= 0)
         {
+            rb.angularVelocity = Random.insideUnitSphere * tumble;
             StartCoroutine(Death());
         }
     }
 
     IEnumerator Death()
     {
-        rb.angularVelocity = Random.insideUnitSphere * tumble;
+        
+        //transform.rotation = Random.rotation;
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
