@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FormationScript : MonoBehaviour
 {
+    [SerializeField]
+    private float speed;
+
     public List<GameObject> formation;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +20,7 @@ public class FormationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * Time.deltaTime);
+        transform.Translate(Vector3.down * Time.deltaTime * speed);
     }
 
     public void OnTriggerEnter(Collider other)

@@ -7,8 +7,8 @@
 	- Get destroyed if they are hit when the shield is down
 	- If all 3 are destroyed, game over
 Enemy:
-- Enemy Spawner
-	- Inactive formations
+//- Enemy Spawner
+	//- Inactive formations
 	- Activate on timer
 - Enemies
 	- Asteroids

@@ -22,7 +22,7 @@ public class projectile : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyScript>().TakeDamage(1);
+            other.gameObject.GetComponent<EnemyScript>().TakeDamage(1f);
             Destroy(gameObject);
         }
     }

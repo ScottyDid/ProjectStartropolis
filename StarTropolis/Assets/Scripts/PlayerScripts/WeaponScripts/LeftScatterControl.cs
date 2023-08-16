@@ -9,15 +9,12 @@ public class LeftScatterControl : MonoBehaviour
 
 	public GameObject pellet;
 	public int pelletCount;
-
 	public Transform fireSpawnL;
 
 	[SerializeField]
-	private float shootDelay = 1f;
-	private float spreadAngle = 45f;
-
+	private float shootDelay = 1f, spreadAngle = 45f;
+	
 	List<Quaternion> pellets;
-    //private float scatterOffSet = Random.Range(-10f, 10f);
 
     private void Awake()
     {

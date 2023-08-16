@@ -13,6 +13,7 @@ public class AsteroidScript : MonoBehaviour
     public GameObject demiAsteroid;
     public Rigidbody rb;
 
+  
     // Start is called before the first frame update
     void Start()
     {
