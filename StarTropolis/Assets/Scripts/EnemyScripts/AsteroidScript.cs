@@ -10,15 +10,18 @@ public class AsteroidScript : MonoBehaviour
     private Vector3 offSetOne, offSetTwo, offSetThree;
    //public int health;
 
+    public GameObject gameManager;
+
     public GameObject demiAsteroid;
     public Rigidbody rb;
-
   
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.angularVelocity = Random.insideUnitSphere * tumble;
+
+        gameManager = GameObject.Find("GameManager");
 
         offSetOne = new Vector3(2, Random.Range(-4, 2), 0);
         offSetTwo = new Vector3(-2, Random.Range(-2, 4), 0);
@@ -37,10 +40,11 @@ public class AsteroidScript : MonoBehaviour
 
         if (GetComponent<EnemyScript>().health <= 0)
         {
+            gameManager.GetComponent<GameManager>().AddScore(50);
             Instantiate(demiAsteroid, transform.position + offSetOne, rotationOne);
             Instantiate(demiAsteroid, transform.position + offSetTwo, rotationTwo);
             Instantiate(demiAsteroid, transform.position + offSetThree, rotationThree);
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
 
