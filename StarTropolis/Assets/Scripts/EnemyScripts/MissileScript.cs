@@ -15,11 +15,12 @@ public class MissileScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        speed = Random.Range(2f, 5f);
     }
 
     private void Update()
     {
+        
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
         transform.LookAt(player);
 

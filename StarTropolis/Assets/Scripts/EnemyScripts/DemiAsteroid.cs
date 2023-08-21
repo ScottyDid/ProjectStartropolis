@@ -10,8 +10,8 @@ public class DemiAsteroid : MonoBehaviour
     private Vector3 zPos;
 
     public int health;
-
     public Rigidbody rb;
+    public GameObject gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +19,8 @@ public class DemiAsteroid : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         //rb.angularVelocity = Random.insideUnitSphere * tumble;
         zPos = transform.localPosition;
+
+        gameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class DemiAsteroid : MonoBehaviour
 
         if (GetComponent<EnemyScript>().health <= 0)
         {
+            gameManager.GetComponent<GameManager>().AddScore(10);
             Destroy(gameObject);
         }
     }
