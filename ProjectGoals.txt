@@ -1,24 +1,31 @@
 //Player:
-- Shield Dome
-	- Health 1 - 100
-	- Change Material on incremental damage (75, 50, 25)
+//- Shield Dome
+	//- Health 1 - 100
+	//- Change Material on incremental damage (75, 50, 25)
 //	- Slowly regens
 - Buildings
 	- Get destroyed if they are hit when the shield is down
 	- If all 3 are destroyed, game over
+
 Enemy:
 //- Enemy Spawner
 	//- Inactive formations
-	- Activate on timer
+	//- Trigger boxes
 - Enemies
-	- Asteroids
-		- Slow moving
-		- Lots of health
-		- Breaks into 2 smaller asteroids when destroyed
-	- Missiles
-		- Normal Speed
-		- 1 Hit Kill
-		- Random angle of attack
+	//- Asteroids
+		//- Slow moving
+		//- Lots of health
+		//- Breaks into 3 smaller asteroids when destroyed
+	//- Missiles
+		//- Random Speed Range (2 to 5)
+		//- 1 Hit Kill
+		- Tumble animation on death
+	- Fighter
+		- Screens other enemies
+		- Follow a movement pattern
+	- Bomber
+		- Strafes Left and Right
+		- Drops a bomb randomly
 
 Game Manager:
 	- Control the game score
